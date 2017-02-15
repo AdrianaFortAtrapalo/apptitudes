@@ -1,0 +1,32 @@
+{
+  "name": "apptitudes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "gulp sass",
+    "watch": "gulp sass:watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AdrianaFortAtrapalo/apptitudes.git"
+  },
+  "author": "PYC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdrianaFortAtrapalo/apptitudes/issues"
+  },
+  "homepage": "https://github.com/AdrianaFortAtrapalo/apptitudes",
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-preset-env": "^1.1.8",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.0.1",
+    "gulp-webpack": "^1.5.0",
+    "vue": "^2.1.10",
+    "vue-router": "^2.2.0",
+    "webpack": "^2.2.1"
+  }
+}
