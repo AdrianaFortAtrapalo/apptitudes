@@ -5,11 +5,11 @@ var sass 			= require('gulp-sass');
 var webpackconfig 	= require('./webpack.config.js');
 var webpack 		= require('gulp-webpack');
 var uglify 			= require('gulp-uglify');
-var myRoute     = './www/'
+var myRoute         = './www/';
 
 
 gulp.task('webpack', function () {
-   return gulp.src('./js/main.js')
+   return gulp.src('')
    		.pipe(webpack(webpackconfig))
    		.pipe(uglify())
    		.pipe(gulp.dest(myRoute+'/js/'));
@@ -28,12 +28,4 @@ gulp.task('sass:watch', function () {
 gulp.task('watch', ['sass','webpack'],function () {
     gulp.watch('./sass/**/*.scss', ['sass']);
     gulp.watch('./js/**/*.js', ['webpack']);
-});
-
-gulp.task('default', function() {
-    // Code for the default task
-});
-
-gulp.task('default', function() {
-    // Code for the default task
 });

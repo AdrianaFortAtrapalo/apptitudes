@@ -1,4 +1,13 @@
-import { myVar } from './prova';
-import AAA from './prova2';
+import prueba from './components/prueba.vue';
+let Vue = require('../node_modules/vue/dist/vue.js');
 
-let fff = new AAA();
+var app = new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello Vue!' 
+    },
+    components:{
+        prueba
+    }
+});     
+    
