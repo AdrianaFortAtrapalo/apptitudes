@@ -4,10 +4,10 @@ let Vue = require('../node_modules/vue/dist/vue.js');
 var app = new Vue({
     el: '#app',
     data: {
-        message: 'Hello Vue!' 
+        message: 'Hello Vue!'
     },
     components:{
         prueba
-    }
+    } 
 });     
     

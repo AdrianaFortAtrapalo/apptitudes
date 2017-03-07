@@ -11,7 +11,7 @@ var myRoute         = './www/';
 gulp.task('webpack', function () {
    return gulp.src('')
    		.pipe(webpack(webpackconfig))
-   		.pipe(uglify())
+        .pipe(uglify())
    		.pipe(gulp.dest(myRoute+'/js/'));
 });
 
@@ -26,6 +26,6 @@ gulp.task('sass:watch', function () {
 });
 
 gulp.task('watch', ['sass','webpack'],function () {
-    gulp.watch('./sass/**/*.scss', ['sass']);
-    gulp.watch('./js/**/*.js', ['webpack']);
+    gulp.watch('./scss/**/*.scss', ['sass']);
+    gulp.watch(['./js/**/*.js','js/**/*.vue'], ['webpack']);
 });
