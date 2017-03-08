@@ -1,4 +1,5 @@
 import prueba from './components/prueba.vue';
+import buscador from './components/buscador.vue';
 let Vue = require('../node_modules/vue/dist/vue.js');
 
 var app = new Vue({
@@ -7,7 +8,8 @@ var app = new Vue({
         message: 'Hello Vue!'
     },
     components:{
-        prueba
+        prueba,
+        buscador
     } 
 });     
     
