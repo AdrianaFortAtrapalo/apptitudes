@@ -36,11 +36,14 @@
         <title>Hello World</title>
     </head>
     <body>
-        <div id="app">
-            <h1>{{ message }}</h1>
-            <prueba></prueba>
-            <buscador></buscador>
-        </div>
+    <div id="app">
+
+        <!-- component matched by the route will render here -->
+        <router-view></router-view>
+    </div>
+
+    <a href="#/buscador">buscar</a>
+    <a href="#/resultados">resultados</a>
         <!--<script type="text/javascript" src="cordova.js"></script>-->
         <script type="text/javascript" src="js/bundle.js"></script>
     </body>

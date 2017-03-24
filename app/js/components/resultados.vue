@@ -1,7 +1,6 @@
 <template>
     <div>
-        <input type="text" placeholder="Buscar aptitud" v-model="eee"/>
-        <span v-on:click="buscarAptitud">Buscar</span>
+       soy resultados
 
     </div>
 </template>
