@@ -37,13 +37,15 @@
     </head>
     <body>
     <div id="app">
-
-        <!-- component matched by the route will render here -->
+        
         <router-view></router-view>
-    </div>
+        
+        <ul>
+            <li><router-link to="/resultados">Resultados</router-link></li>
+            <li><router-link to="/buscador">Buscador</router-link></li>
+        </ul>
 
-    <a href="#/buscador">buscar</a>
-    <a href="#/resultados">resultados</a>
+    </div>
         <!--<script type="text/javascript" src="cordova.js"></script>-->
         <script type="text/javascript" src="js/bundle.js"></script>
     </body>

@@ -1,11 +1,12 @@
 'use strict';
 
-var gulp 			= require('gulp');
-var sass 			= require('gulp-sass');
-var webpackconfig 	= require('./webpack.config.js');
-var webpack 		= require('gulp-webpack');
-var uglify 			= require('gulp-uglify');
-var myRoute         = './www/';
+var gulp 			 = require('gulp');
+var sass 			 = require('gulp-sass');
+var webpackconfig 	 = require('./webpack.config.js');
+var webpack 		 = require('gulp-webpack');
+var uglify 			 = require('gulp-uglify');
+var webserver 		 = require('gulp-webserver');
+var myRoute          = './www/';
 
 
 gulp.task('webpack', function () {
@@ -28,4 +29,13 @@ gulp.task('sass:watch', function () {
 gulp.task('watch', ['sass','webpack'],function () {
     gulp.watch('./scss/**/*.scss', ['sass']);
     gulp.watch(['./js/**/*.js','js/**/*.vue'], ['webpack']);
+});
+
+gulp.task('webserver',['watch'], function() {
+  gulp.src('www')
+    .pipe(webserver({
+      port:'8080',
+      livereload: true,
+      open: true
+    }));
 });
