@@ -1,0 +1,55 @@
+{
+    "users": [
+        {
+            "user_name" :"Tito palomeke",
+            "skills"      : [
+                {
+                    "skill_name"    : "js",
+                    "skill_rate"    :  10
+                },
+                {
+                    "skill_name"    : "php",
+                    "skill_rate"    :  5
+                },
+                {
+                    "skill_name"    : "sass",
+                    "skill_rate"    :  18
+                }
+            ]
+        },
+        {
+            "user_name" :"Adriana",
+            "skills"      : [
+                {
+                    "skill_name"    : "js",
+                    "skill_rate"    :  6
+                },
+                {
+                    "skill_name"    : "php",
+                    "skill_rate"    :  10
+                },
+                {
+                    "skill_name"    : "sass",
+                    "skill_rate"    :  20
+                }
+            ]
+        },
+        {
+            "user_name" :"Lucía",
+            "skills"      : [
+                {
+                    "skill_name"    : "js",
+                    "skill_rate"    :  30
+                },
+                {
+                    "skill_name"    : "php",
+                    "skill_rate"    :  3
+                },
+                {
+                    "skill_name"    : "sass",
+                    "skill_rate"    :  14
+                }
+            ]
+        }
+    ]   
+}

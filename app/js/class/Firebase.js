@@ -34,6 +34,5 @@ export default class Firebase {
             photoUrl = user.photoURL;
             uid = user.uid;
         }
-        
     }
 }

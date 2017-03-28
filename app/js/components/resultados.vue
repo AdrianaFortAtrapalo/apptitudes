@@ -11,7 +11,7 @@
     export default {
         data () {
             return {
-                aaa: ''
+                eee: ''
             }
         },
         methods: {
@@ -21,6 +21,4 @@
         },
         props: ['id','search','disabled']
     }
-    
-
 </script>

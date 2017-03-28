@@ -2474,7 +2474,7 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -2490,7 +2490,9 @@
 
 	exports.default = {
 	    data: function data() {
-	        return {};
+	        return {
+	            eee: ''
+	        };
 	    },
 
 	    methods: {
@@ -2595,7 +2597,7 @@
 	exports.default = {
 	    data: function data() {
 	        return {
-	            aaa: ''
+	            eee: ''
 	        };
 	    },
 
