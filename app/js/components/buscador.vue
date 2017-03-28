@@ -10,12 +10,12 @@
     export default {
         data () {
             return {
-                eee: ''
+                
             }
         },
         methods: {
             buscarAptitud () {
-                alert(this.eee);
+                return this.eee;
             }
         }
     }

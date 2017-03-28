@@ -40,12 +40,12 @@
         <router-view></router-view>
         
         <ul>
-            <li><router-link to="/resultados">Resultados</router-link></li>
-            <li><router-link to="/buscador">Buscador</router-link></li>
+            <li><router-link :to="{ name: 'resultados' }">Resultados</router-link></li>
+            <li><router-link :to="{ name: 'buscador' }">Buscador</router-link></li>
         </ul>
 
     </div>
-        <!--<script type="text/javascript" src="cordova.js"></script>-->
+            <!--<script type="text/javascript" src="cordova.js"></script>-->
         <script type="text/javascript" src="js/bundle.js"></script>
     </body>
 </html>

@@ -22,16 +22,18 @@ export default class Firebase {
             console.log(error); 
         });
     }
-    
+
     getCurrentUser(user){
-        
+        if(!user){
+            let user = firebase.auth().currentUser;
+        }
         let name, email, photoUrl, uid;
         if (user != null) {
             name = user.displayName;
             email = user.email;
             photoUrl = user.photoURL;
             uid = user.uid;
-            console.log('Hay user');
         }
+        
     }
 }

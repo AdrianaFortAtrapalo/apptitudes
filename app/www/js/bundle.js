@@ -82,7 +82,7 @@
 
 	Vue.use(_vueRouter2.default);
 
-	var routes = [{ path: '/buscador', component: _buscador2.default }, { path: '/resultados', component: _resultados2.default }];
+	var routes = [{ path: '/resultados', name: 'resultados', component: _resultados2.default, props: { id: 4, search: 'djnsjgsdjfjkjgsdnj', disabled: true } }, { path: '/', name: 'buscador', component: _buscador2.default }];
 
 	var router = new _vueRouter2.default({
 	    routes: routes
@@ -2474,7 +2474,7 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -2490,14 +2490,12 @@
 
 	exports.default = {
 	    data: function data() {
-	        return {
-	            eee: ''
-	        };
+	        return {};
 	    },
 
 	    methods: {
 	        buscarAptitud: function buscarAptitud() {
-	            alert(this.eee);
+	            return this.eee;
 	        }
 	    }
 	};
@@ -2591,11 +2589,13 @@
 	//
 	//
 	//
+	//
+	//
 
 	exports.default = {
 	    data: function data() {
 	        return {
-	            eee: ''
+	            aaa: ''
 	        };
 	    },
 
@@ -2603,7 +2603,8 @@
 	        buscarAptitud: function buscarAptitud() {
 	            alert(this.eee);
 	        }
-	    }
+	    },
+	    props: ['id', 'search', 'disabled']
 	};
 
 /***/ },
@@ -2611,7 +2612,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', [_vm._v("\n   soy resultados\n\n")])
+	  return _c('div', [_vm._v("\n    Soy resultados con id \n    " + _vm._s(_vm.id) + "\n    " + _vm._s(_vm.search) + "\n    " + _vm._s(_vm.disabled) + "\n")])
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
@@ -11846,7 +11847,9 @@
 	    }, {
 	        key: "getCurrentUser",
 	        value: function getCurrentUser(user) {
-
+	            if (!user) {
+	                var _user = firebase.auth().currentUser;
+	            }
 	            var name = void 0,
 	                email = void 0,
 	                photoUrl = void 0,
@@ -11856,7 +11859,6 @@
 	                email = user.email;
 	                photoUrl = user.photoURL;
 	                uid = user.uid;
-	                console.log('Hay user');
 	            }
 	        }
 	    }]);

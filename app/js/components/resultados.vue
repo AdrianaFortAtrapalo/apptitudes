@@ -1,7 +1,9 @@
 <template>
     <div>
-       soy resultados
-
+        Soy resultados con id 
+        {{ id }}
+        {{ search }}
+        {{ disabled }}
     </div>
 </template>
 
@@ -9,14 +11,16 @@
     export default {
         data () {
             return {
-                eee: ''
+                aaa: ''
             }
         },
         methods: {
             buscarAptitud () {
                 alert(this.eee);
             }
-        }
+        },
+        props: ['id','search','disabled']
     }
+    
 
 </script>
