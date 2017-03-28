@@ -2396,7 +2396,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Users/pau.obrador/atrapalo/formacion/apptitudes/app/js/components/buscador.vue"
+	Component.options.__file = "/Users/roger.riera/PhpstormProjects/apptitudes/app/js/components/buscador.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] buscador.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -2555,7 +2555,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Users/pau.obrador/atrapalo/formacion/apptitudes/app/js/components/resultados.vue"
+	Component.options.__file = "/Users/roger.riera/PhpstormProjects/apptitudes/app/js/components/resultados.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] resultados.vue: functional components are not supported with templates, they should use render functions.")}
 
