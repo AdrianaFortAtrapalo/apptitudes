@@ -1,5 +1,3 @@
-
-
 let Vue = require('../node_modules/vue/dist/vue.js');
 import VueRouter from '../node_modules/vue-router/dist/vue-router';
 

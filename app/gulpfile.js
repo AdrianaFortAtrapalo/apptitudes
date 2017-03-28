@@ -6,14 +6,21 @@ var webpackconfig 	 = require('./webpack.config.js');
 var webpack 		 = require('gulp-webpack');
 var uglify 			 = require('gulp-uglify');
 var webserver 		 = require('gulp-webserver');
+var argv             = require('yargs').argv;
 var myRoute          = './www/';
 
 
 gulp.task('webpack', function () {
-   return gulp.src('')
+    if(argv.ugly == 'true'){
+        return gulp.src('')
    		.pipe(webpack(webpackconfig))
         .pipe(uglify())
    		.pipe(gulp.dest(myRoute+'/js/'));
+    }else{
+        return gulp.src('')
+   		.pipe(webpack(webpackconfig))
+   		.pipe(gulp.dest(myRoute+'/js/'));
+    }
 });
 
 gulp.task('sass', function () {

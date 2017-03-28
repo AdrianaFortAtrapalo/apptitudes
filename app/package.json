@@ -8,7 +8,8 @@
     "sass": "gulp sass",
     "sass:watch": "gulp sass:watch",
     "watch": "gulp watch",
-    "dev": "gulp webserver"
+    "dev": "gulp webserver --ugly=false",
+    "build": "gulp webserver --ugly=true"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "vue-loader": "^11.1.4",
     "vue-router": "^2.2.0",
     "vue-template-compiler": "^2.2.1",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "yargs": "^7.0.2"
   }
 }
