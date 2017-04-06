@@ -3,11 +3,12 @@ let firebase = require('firebase');
 export default class Firebase {
     constructor(){
         var config = {
-            apiKey: "AIzaSyB6vzYpRLWMVYHXKKOH4IAfaBJmi7alXO0",
-            authDomain: "apptitudes-94eb8.firebaseapp.com",
-            databaseURL: "https://apptitudes-94eb8.firebaseio.com",
-            storageBucket: "apptitudes-94eb8.appspot.com",
-            messagingSenderId: "474638037938"
+            apiKey: "AIzaSyCrf9sel9iYtG_t3HA3w5RTaAdU-U8rqjQ",
+            authDomain: "apptitudes-be9ab.firebaseapp.com",
+            databaseURL: "https://apptitudes-be9ab.firebaseio.com",
+            projectId: "apptitudes-be9ab",
+            storageBucket: "apptitudes-be9ab.appspot.com",
+            messagingSenderId: "862210218120"
         };
         firebase.initializeApp(config);
     }
