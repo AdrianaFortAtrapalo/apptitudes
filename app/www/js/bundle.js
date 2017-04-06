@@ -48,14 +48,14 @@
 
 	__webpack_require__(1);
 
-	var _Firebase = __webpack_require__(11);
+	var _User = __webpack_require__(11);
 
-	var _Firebase2 = _interopRequireDefault(_Firebase);
+	var _User2 = _interopRequireDefault(_User);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var fb = new _Firebase2.default();
-	fb.login('pau.obrador@atrapalo.com', 'aaa');
+	var fb = new _User2.default('pau.obrador@atrapalo.com', 'dev12345');
+	fb.login();
 
 /***/ },
 /* 1 */
@@ -11810,7 +11810,7 @@
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -11818,39 +11818,39 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _Firebase = __webpack_require__(12);
+
+	var _Firebase2 = _interopRequireDefault(_Firebase);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var firebase = __webpack_require__(12);
+	var User = function () {
+	    function User(email, password) {
+	        _classCallCheck(this, User);
 
-	var Firebase = function () {
-	    function Firebase() {
-	        _classCallCheck(this, Firebase);
-
-	        var config = {
-	            apiKey: "AIzaSyB6vzYpRLWMVYHXKKOH4IAfaBJmi7alXO0",
-	            authDomain: "apptitudes-94eb8.firebaseapp.com",
-	            databaseURL: "https://apptitudes-94eb8.firebaseio.com",
-	            storageBucket: "apptitudes-94eb8.appspot.com",
-	            messagingSenderId: "474638037938"
-	        };
-	        firebase.initializeApp(config);
+	        this.fb = email;
+	        this.email = email;
+	        this.password = password;
 	    }
 
-	    _createClass(Firebase, [{
-	        key: "login",
-	        value: function login(email, password) {
+	    _createClass(User, [{
+	        key: 'login',
+	        value: function login() {
+	            var fb = new _Firebase2.default();
 	            var _this = this;
-	            firebase.auth().signInWithEmailAndPassword(email, password).then(function (user) {
+	            fb.auth().signInWithEmailAndPassword(this.email, this.password).then(function (user) {
 	                _this.getCurrentUser(user);
 	            }).catch(function (error) {
 	                console.log(error);
 	            });
 	        }
 	    }, {
-	        key: "getCurrentUser",
+	        key: 'getCurrentUser',
 	        value: function getCurrentUser(user) {
 	            if (!user) {
-	                var _user = firebase.auth().currentUser;
+	                var _user = fb.auth().currentUser;
 	            }
 	            var name = void 0,
 	                email = void 0,
@@ -11865,13 +11865,43 @@
 	        }
 	    }]);
 
-	    return Firebase;
+	    return User;
 	}();
+
+	exports.default = User;
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var firebase = __webpack_require__(13);
+
+	var Firebase = function Firebase() {
+	    _classCallCheck(this, Firebase);
+
+	    var config = {
+	        apiKey: "AIzaSyCrf9sel9iYtG_t3HA3w5RTaAdU-U8rqjQ",
+	        authDomain: "apptitudes-be9ab.firebaseapp.com",
+	        databaseURL: "https://apptitudes-be9ab.firebaseio.com",
+	        projectId: "apptitudes-be9ab",
+	        storageBucket: "apptitudes-be9ab.appspot.com",
+	        messagingSenderId: "862210218120"
+	    };
+	    firebase.initializeApp(config);
+	};
 
 	exports.default = Firebase;
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -11881,16 +11911,16 @@
 	 *
 	 *   firebase = require('firebase');
 	 */
-	var firebase = __webpack_require__(13);
-	__webpack_require__(14);
+	var firebase = __webpack_require__(14);
 	__webpack_require__(15);
 	__webpack_require__(16);
 	__webpack_require__(17);
+	__webpack_require__(18);
 	module.exports = firebase;
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {var firebase = (function(){
@@ -11936,10 +11966,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(13);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(14);
 	(function(){
 	/*! @license Firebase v3.7.3
 	    Build: 3.7.3-rc.1
@@ -12192,10 +12222,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(13);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(14);
 	(function(){
 	/*! @license Firebase v3.7.3
 	    Build: 3.7.3-rc.1
@@ -12462,10 +12492,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(13);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(14);
 	(function(){
 	/*! @license Firebase v3.7.3
 	    Build: 3.7.3-rc.1
@@ -12526,10 +12556,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(13);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(14);
 	(function(){
 	/*! @license Firebase v3.7.3
 	    Build: 3.7.3-rc.1

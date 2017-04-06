@@ -1,5 +1,5 @@
 import './router';
-import Firebase from './class/Firebase';  
+import User from './class/User';
 
-let fb = new Firebase();
-fb.login('pau.obrador@atrapalo.com','aaa');
+let fb = new User('pau.obrador@atrapalo.com','dev12345');
+fb.login();
