@@ -1,10 +1,12 @@
 <template>
     <div>
-        Soy resultados con id 
-        {{ id }}
-        {{ search }}
-        {{ disabled }}
+        Soy resultados!!!
+
         <boxresults></boxresults>
+
+                {{ id }}
+                {{ search }}
+                {{ disabled }}
     </div>
 </template>
 
