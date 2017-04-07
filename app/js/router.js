@@ -3,12 +3,14 @@ import VueRouter from '../node_modules/vue-router/dist/vue-router';
 
 Vue.use(VueRouter);
 
-import buscador from './components/buscador.vue';
-import resultados from './components/resultados.vue';
+import buscador from './pages/buscador.vue';
+import resultados from './pages/resultados.vue';
+import ficha from './pages/ficha.vue';
 
 const routes = [
     { path: '/resultados', name: 'resultados', component: resultados, props: {id: 4, search: 'djnsjgsdjfjkjgsdnj', disabled: true } },
-    { path: '/', name: 'buscador', component: buscador } 
+    { path: '/', name: 'buscador', component: buscador },
+    { path: '/ficha', name: 'ficha', component: ficha }
 ];
 
 const router = new VueRouter({

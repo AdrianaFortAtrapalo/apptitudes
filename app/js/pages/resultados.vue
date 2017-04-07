@@ -4,10 +4,13 @@
         {{ id }}
         {{ search }}
         {{ disabled }}
+        <boxresults></boxresults>
     </div>
 </template>
 
 <script>
+    import boxresults from '../components/box-results.vue'
+
     export default {
         data () {
             return {
@@ -19,6 +22,9 @@
                 alert(this.eee);
             }
         },
-        props: ['id','search','disabled']
+
+        components: {
+            boxresults
+        }
     }
 </script>
