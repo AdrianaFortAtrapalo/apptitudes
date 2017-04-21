@@ -4,7 +4,7 @@ import VueRouter from '../node_modules/vue-router/dist/vue-router';
 Vue.use(VueRouter);
 
 import buscador from './pages/buscador.vue';
-import resultados from './pages/resultados.vue';
+import resultados from './components/resultados.vue';
 import ficha from './pages/ficha.vue';
 
 const routes = [

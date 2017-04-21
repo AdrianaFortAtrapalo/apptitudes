@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import boxresults from '../components/box-results.vue'
+    import boxresults from './box-results.vue'
 
     export default {
         data () {
