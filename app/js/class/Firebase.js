@@ -1,5 +1,4 @@
 let firebase = require('firebase');
-
 export default class Firebase {
     constructor(){
         var config = {
@@ -10,6 +9,6 @@ export default class Firebase {
             storageBucket: "apptitudes-be9ab.appspot.com",
             messagingSenderId: "862210218120"
         };
-        firebase.initializeApp(config);
+        return firebase.initializeApp(config);
     }
-}
+} 

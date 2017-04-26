@@ -1,5 +1,10 @@
 import './router';
+import Firebase from './class/Firebase';
 import User from './class/User';
 
-let fb = new User('pau.obrador@atrapalo.com','dev12345');
-fb.login();
+const global = window;
+
+global.firebase = new Firebase();
+
+let user = new User(firebase);
+user.getCurrentUser();

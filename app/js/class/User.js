@@ -1,34 +1,30 @@
-import Firebase from './Firebase';
-
-export default class User {
-    constructor(email, password) {
-        this.fb = email;
+export default class User{
+    constructor(firebase,email=0,password=0) {
         this.email = email;
         this.password = password;
+        this.user,this.id; 
+        this.firebase = firebase;
     }
 
     login() {
-        let fb = new Firebase();
-        let _this = this;
-        fb.auth().signInWithEmailAndPassword(this.email, this.password)
+        this.firebase.auth().signInWithEmailAndPassword(this.email, this.password)
         .then(function (user) {
-            _this.getCurrentUser(user);
+            console.log("email: "+ user.email + "id: "+user.uid);
+            window.location = "/#/";
         })
         .catch(function (error) {
-            console.log(error);
+            
         });
     }
-    getCurrentUser(user) {
-        if (!user) {
-            let user = fb.auth().currentUser;
-        }
-        let name, email, photoUrl, uid;
+
+    getCurrentUser(){
+        let user = this.firebase.auth().currentUser;
         if (user != null) {
-            name = user.displayName;
-            email = user.email;
-            photoUrl = user.photoURL;
-            uid = user.uid;
+            console.log("entro");
+            window.location = "/#/";
+             alert("yes user"); 
+        } else {
+            alert("no user");
         }
     }
-
 }

@@ -17,9 +17,9 @@
         data () {
             return {
                 eee: ''
-            }
+            } 
         },
-        methods: {
+        methods: { 
             buscarAptitud () {
                 alert(this.eee);
             }
