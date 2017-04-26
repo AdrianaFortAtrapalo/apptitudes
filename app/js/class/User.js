@@ -7,24 +7,23 @@ export default class User{
     }
 
     login() {
+        let that = this;
         this.firebase.auth().signInWithEmailAndPassword(this.email, this.password)
         .then(function (user) {
-            console.log("email: "+ user.email + "id: "+user.uid);
-            window.location = "/#/";
+            that.getCurrentUser();
         })
         .catch(function (error) {
-            
-        });
+            console.log(error.message)
+        }); 
     }
 
     getCurrentUser(){
         let user = this.firebase.auth().currentUser;
         if (user != null) {
-            console.log("entro");
-            window.location = "/#/";
+             window.location = "/#/";
              alert("yes user"); 
         } else {
             alert("no user");
-        }
+        } 
     }
 }

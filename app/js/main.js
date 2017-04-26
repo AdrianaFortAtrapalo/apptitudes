@@ -6,5 +6,7 @@ const global = window;
 
 global.firebase = new Firebase();
 
-let user = new User(firebase);
-user.getCurrentUser();
+setTimeout(function(){ 
+    let user = new User(firebase);
+    user.getCurrentUser();  
+}, 400);

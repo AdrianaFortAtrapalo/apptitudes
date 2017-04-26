@@ -62,8 +62,10 @@
 
 	global.firebase = new _Firebase2.default();
 
-	var user = new _User2.default(firebase);
-	user.getCurrentUser();
+	setTimeout(function () {
+	    var user = new _User2.default(firebase);
+	    user.getCurrentUser();
+	}, 400);
 
 /***/ },
 /* 1 */
@@ -2904,17 +2906,18 @@
 	    _createClass(User, [{
 	        key: "login",
 	        value: function login() {
+	            var that = this;
 	            this.firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(function (user) {
-	                console.log("email: " + user.email + "id: " + user.uid);
-	                window.location = "/#/";
-	            }).catch(function (error) {});
+	                that.getCurrentUser();
+	            }).catch(function (error) {
+	                console.log(error.message);
+	            });
 	        }
 	    }, {
 	        key: "getCurrentUser",
 	        value: function getCurrentUser() {
 	            var user = this.firebase.auth().currentUser;
 	            if (user != null) {
-	                console.log("entro");
 	                window.location = "/#/";
 	                alert("yes user");
 	            } else {
