@@ -6,7 +6,7 @@ export default class User{
 
     login(email,password) {
         this.firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(()=> {
+        .then(() => {
             this.getCurrentUser();
         })
         .catch(function (error) {
@@ -30,6 +30,14 @@ export default class User{
         let splitEmail = this.user.email.split('.');
         let displayName = splitEmail[0]+' '+ splitEmail[1];
         this.user.updateProfile({ displayName:displayName });
+    }
+
+    logOut(){
+        this.firebase.auth().signOut().then(function() {
+            window.location = '/#/login';
+        }, function(error) {
+            console.log(error);
+        });
     }
 
     getId(){

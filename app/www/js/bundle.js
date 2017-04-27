@@ -2511,6 +2511,9 @@
 	    methods: {
 	        buscarAptitud: function buscarAptitud() {
 	            return this.eee;
+	        },
+	        logOut: function logOut() {
+	            app.userLogOut();
 	        }
 	    },
 
@@ -2730,7 +2733,11 @@
 	    on: {
 	      "click": _vm.buscarAptitud
 	    }
-	  }, [_vm._v("Buscar")]), _vm._v(" "), _c('p', [_vm._v("Message is: " + _vm._s(_vm.eee))]), _vm._v(" "), _c('resultados')], 1)
+	  }, [_vm._v("Buscar")]), _vm._v(" "), _c('p', [_vm._v("Message is: " + _vm._s(_vm.eee))]), _vm._v(" "), _c('span', {
+	    on: {
+	      "click": _vm.logOut
+	    }
+	  }, [_vm._v("Logout")]), _vm._v(" "), _c('resultados')], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
@@ -2843,13 +2850,14 @@
 	    data: function data() {
 	        return {
 	            email: '',
-	            password: ''
+	            password: '',
+	            existCurrentUser: app.userExistCurrent()
 	        };
 	    },
 
 	    methods: {
 	        login: function login() {
-	            app.userLogin(this.email, this.password);
+	            app.userLogIn(this.email, this.password);
 	        }
 	    }
 	}; //
@@ -2915,6 +2923,15 @@
 	            var splitEmail = this.user.email.split('.');
 	            var displayName = splitEmail[0] + ' ' + splitEmail[1];
 	            this.user.updateProfile({ displayName: displayName });
+	        }
+	    }, {
+	        key: 'logOut',
+	        value: function logOut() {
+	            this.firebase.auth().signOut().then(function () {
+	                window.location = '/#/login';
+	            }, function (error) {
+	                console.log(error);
+	            });
 	        }
 	    }, {
 	        key: 'getId',
@@ -12338,21 +12355,26 @@
 
 	var App = function () {
 	    function App() {
-	        var _this = this;
-
 	        _classCallCheck(this, App);
 
 	        this.firebase = new _Firebase2.default();
 	        this.user = new _User2.default(this.firebase);
-	        setTimeout(function () {
-	            _this.user.getCurrentUser();
-	        }, 400);
 	    }
 
 	    _createClass(App, [{
-	        key: 'userLogin',
-	        value: function userLogin(email, password) {
+	        key: 'userExistCurrent',
+	        value: function userExistCurrent() {
+	            this.user.getCurrentUser();
+	        }
+	    }, {
+	        key: 'userLogIn',
+	        value: function userLogIn(email, password) {
 	            this.user.login(email, password);
+	        }
+	    }, {
+	        key: 'userLogOut',
+	        value: function userLogOut() {
+	            this.user.logOut();
 	        }
 	    }]);
 
@@ -12365,7 +12387,7 @@
 /* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -12379,12 +12401,12 @@
 	    _classCallCheck(this, Firebase);
 
 	    var config = {
-	        apiKey: "AIzaSyCrf9sel9iYtG_t3HA3w5RTaAdU-U8rqjQ",
-	        authDomain: "apptitudes-be9ab.firebaseapp.com",
-	        databaseURL: "https://apptitudes-be9ab.firebaseio.com",
-	        projectId: "apptitudes-be9ab",
-	        storageBucket: "apptitudes-be9ab.appspot.com",
-	        messagingSenderId: "862210218120"
+	        apiKey: 'AIzaSyCrf9sel9iYtG_t3HA3w5RTaAdU-U8rqjQ',
+	        authDomain: 'apptitudes-be9ab.firebaseapp.com',
+	        databaseURL: 'https://apptitudes-be9ab.firebaseio.com',
+	        projectId: 'apptitudes-be9ab',
+	        storageBucket: 'apptitudes-be9ab.appspot.com',
+	        messagingSenderId: '862210218120'
 	    };
 	    return firebase.initializeApp(config);
 	};

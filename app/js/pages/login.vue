@@ -15,12 +15,13 @@
         data () {
             return {
                 email: '',
-                password: ''
+                password: '',
+                existCurrentUser: app.userExistCurrent()
             }
         },
         methods: {
             login () {
-               app.userLogin(this.email,this.password);
+               app.userLogIn(this.email,this.password);
             }
         }
     }
