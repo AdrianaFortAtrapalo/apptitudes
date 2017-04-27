@@ -39,6 +39,8 @@ sftp-config*.json
 /app/Resources/cache/*
 /app/config/parameters.yml
 /app/logs/*
+/app/www/css/*
+/app/www/js/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
 /build/
