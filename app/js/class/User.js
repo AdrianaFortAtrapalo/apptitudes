@@ -4,6 +4,18 @@ export default class User{
         this.user = null;
     }
 
+    getId(){
+       return this.user.uid;
+    }
+
+    getEmail(){
+       return this.user.email;
+    }
+
+    getName(){
+       return this.user.displayName;
+    }
+
     login(email,password) {
         this.firebase.auth().signInWithEmailAndPassword(email, password)
         .then(() => {
@@ -38,9 +50,5 @@ export default class User{
         }, function(error) {
             console.log(error);
         });
-    }
-
-    getId(){
-       return this.user.uid;
     }
 }

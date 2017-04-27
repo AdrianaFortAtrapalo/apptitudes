@@ -22,5 +22,5 @@ export default class App {
 
     userLogOut(){
         this.user.logOut();  
-    } 
+    }
 } 

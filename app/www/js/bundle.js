@@ -2895,6 +2895,21 @@
 	    }
 
 	    _createClass(User, [{
+	        key: 'getId',
+	        value: function getId() {
+	            return this.user.uid;
+	        }
+	    }, {
+	        key: 'getEmail',
+	        value: function getEmail() {
+	            return this.user.email;
+	        }
+	    }, {
+	        key: 'getName',
+	        value: function getName() {
+	            return this.user.displayName;
+	        }
+	    }, {
 	        key: 'login',
 	        value: function login(email, password) {
 	            var _this = this;
@@ -2933,11 +2948,6 @@
 	            }, function (error) {
 	                console.log(error);
 	            });
-	        }
-	    }, {
-	        key: 'getId',
-	        value: function getId() {
-	            return this.user.uid;
 	        }
 	    }]);
 
