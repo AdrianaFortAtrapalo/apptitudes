@@ -20,9 +20,7 @@
         },
         methods: {
             login () {
-                console.log(this.email,this.password);
-                let userLog = new User(firebase,this.email,this.password);
-                userLog.login(); 
+               app.userLogin(this.email,this.password);
             }
         }
     }

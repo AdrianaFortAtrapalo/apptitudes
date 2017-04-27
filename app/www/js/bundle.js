@@ -48,24 +48,13 @@
 
 	__webpack_require__(1);
 
-	var _Firebase = __webpack_require__(19);
+	var _App = __webpack_require__(19);
 
-	var _Firebase2 = _interopRequireDefault(_Firebase);
-
-	var _User = __webpack_require__(16);
-
-	var _User2 = _interopRequireDefault(_User);
+	var _App2 = _interopRequireDefault(_App);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var global = window;
-
-	global.firebase = new _Firebase2.default();
-
-	setTimeout(function () {
-	    var user = new _User2.default(firebase);
-	    user.getCurrentUser();
-	}, 400);
+	window.app = new _App2.default();
 
 /***/ },
 /* 1 */
@@ -2860,9 +2849,7 @@
 
 	    methods: {
 	        login: function login() {
-	            console.log(this.email, this.password);
-	            var userLog = new _User2.default(firebase, this.email, this.password);
-	            userLog.login();
+	            app.userLogin(this.email, this.password);
 	        }
 	    }
 	}; //
@@ -2880,7 +2867,7 @@
 /* 16 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -2892,37 +2879,47 @@
 
 	var User = function () {
 	    function User(firebase) {
-	        var email = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-	        var password = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-
 	        _classCallCheck(this, User);
 
-	        this.email = email;
-	        this.password = password;
-	        this.user, this.id;
 	        this.firebase = firebase;
+	        this.user = null;
 	    }
 
 	    _createClass(User, [{
-	        key: "login",
-	        value: function login() {
-	            var that = this;
-	            this.firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(function (user) {
-	                that.getCurrentUser();
+	        key: 'login',
+	        value: function login(email, password) {
+	            var _this = this;
+
+	            this.firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
+	                _this.getCurrentUser();
 	            }).catch(function (error) {
 	                console.log(error.message);
 	            });
 	        }
 	    }, {
-	        key: "getCurrentUser",
+	        key: 'getCurrentUser',
 	        value: function getCurrentUser() {
 	            var user = this.firebase.auth().currentUser;
+
 	            if (user != null) {
-	                window.location = "/#/";
-	                alert("yes user");
+	                this.user = user;
+	                this._updateUserDisplayName();
+	                window.location = '/#/';
 	            } else {
-	                alert("no user");
+	                window.location = '/#/login';
 	            }
+	        }
+	    }, {
+	        key: '_updateUserDisplayName',
+	        value: function _updateUserDisplayName() {
+	            var splitEmail = this.user.email.split('.');
+	            var displayName = splitEmail[0] + ' ' + splitEmail[1];
+	            this.user.updateProfile({ displayName: displayName });
+	        }
+	    }, {
+	        key: 'getId',
+	        value: function getId() {
+	            return this.user.uid;
 	        }
 	    }]);
 
@@ -12319,6 +12316,55 @@
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Firebase = __webpack_require__(20);
+
+	var _Firebase2 = _interopRequireDefault(_Firebase);
+
+	var _User = __webpack_require__(16);
+
+	var _User2 = _interopRequireDefault(_User);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var App = function () {
+	    function App() {
+	        var _this = this;
+
+	        _classCallCheck(this, App);
+
+	        this.firebase = new _Firebase2.default();
+	        this.user = new _User2.default(this.firebase);
+	        setTimeout(function () {
+	            _this.user.getCurrentUser();
+	        }, 400);
+	    }
+
+	    _createClass(App, [{
+	        key: 'userLogin',
+	        value: function userLogin(email, password) {
+	            this.user.login(email, password);
+	        }
+	    }]);
+
+	    return App;
+	}();
+
+	exports.default = App;
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
@@ -12327,7 +12373,7 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var firebase = __webpack_require__(20);
+	var firebase = __webpack_require__(21);
 
 	var Firebase = function Firebase() {
 	    _classCallCheck(this, Firebase);
@@ -12346,7 +12392,7 @@
 	exports.default = Firebase;
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12356,16 +12402,16 @@
 	 *
 	 *   firebase = require('firebase');
 	 */
-	var firebase = __webpack_require__(21);
-	__webpack_require__(22);
+	var firebase = __webpack_require__(22);
 	__webpack_require__(23);
 	__webpack_require__(24);
 	__webpack_require__(25);
+	__webpack_require__(26);
 	module.exports = firebase;
 
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {var firebase = (function(){
@@ -12411,10 +12457,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(21);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(22);
 	(function(){
 	/*! @license Firebase v3.7.5
 	    Build: 3.7.5-rc.1
@@ -12668,10 +12714,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(21);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(22);
 	(function(){
 	/*! @license Firebase v3.7.5
 	    Build: 3.7.5-rc.1
@@ -12938,10 +12984,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(21);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(22);
 	(function(){
 	/*! @license Firebase v3.7.5
 	    Build: 3.7.5-rc.1
@@ -13002,10 +13048,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(21);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(22);
 	(function(){
 	/*! @license Firebase v3.7.5
 	    Build: 3.7.5-rc.1

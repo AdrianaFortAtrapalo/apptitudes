@@ -18,7 +18,7 @@
             return {
                 eee: ''
             } 
-        },
+        }, 
         methods: { 
             buscarAptitud () {
                 alert(this.eee);

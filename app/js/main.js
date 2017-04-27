@@ -1,12 +1,7 @@
 import './router';
-import Firebase from './class/Firebase';
-import User from './class/User';
+import App from './class/App';
 
-const global = window;
+window.app = new App();
 
-global.firebase = new Firebase();
 
-setTimeout(function(){ 
-    let user = new User(firebase);
-    user.getCurrentUser();  
-}, 400);
+

@@ -9,7 +9,7 @@
                 <li class="aptitudes-li">PHP <strong>2</strong></li>
                 <li class="aptitudes-li">CSS <strong>34</strong></li>
                 <li><router-link :to="{ name: 'ficha' }">+10</router-link></li>
-            </ul>  
+            </ul>   
         </div> 
     </div>  
 </template>
