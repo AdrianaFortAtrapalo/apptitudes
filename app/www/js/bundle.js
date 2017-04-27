@@ -2504,7 +2504,8 @@
 	exports.default = {
 	    data: function data() {
 	        return {
-	            eee: ''
+	            eee: '',
+	            existCurrentUser: app.userExistCurrent()
 	        };
 	    },
 

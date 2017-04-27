@@ -14,12 +14,13 @@
     export default {
         data () {
             return {
-                eee: ''
+                eee: '',
+                existCurrentUser: app.userExistCurrent()
             }
         },
         methods: {
             buscarAptitud () {
-                return this.eee;
+                return this.eee; 
             },
             logOut(){
                 app.userLogOut();
