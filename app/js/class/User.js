@@ -4,6 +4,8 @@ export default class User{
         this.user = null;
     }
 
+    // 1.1 Getters
+    //-------------------------------------------------
     getId(){
        return this.user.uid;
     }
@@ -15,6 +17,9 @@ export default class User{
     getName(){
        return this.user.displayName;
     }
+
+    // 1.2. Methods
+    //-------------------------------------------------
 
     login(email,password) {
         this.firebase.auth().signInWithEmailAndPassword(email, password)
