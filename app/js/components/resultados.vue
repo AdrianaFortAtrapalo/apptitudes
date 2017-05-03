@@ -3,10 +3,8 @@
         Soy resultados!!!
 
         <boxresults></boxresults>
-
-                {{ id }}
-                {{ search }}
-                {{ disabled }}
+        {{ busqueda }}
+        
     </div>
 </template>
 
@@ -16,17 +14,22 @@
     export default {
         data () {
             return {
-                eee: ''
+                usuarios: ''
             } 
         }, 
         methods: { 
             buscarAptitud () {
-                alert(this.eee);
+               
             }
         },
-
+        props:['busqueda'],
         components: {
             boxresults
+        },
+        watch: {
+            busqueda: function () {
+                console.log("entro");
+            }
         }
     }
 </script>

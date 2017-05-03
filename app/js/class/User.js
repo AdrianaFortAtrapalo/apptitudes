@@ -33,7 +33,7 @@ export default class User{
 
     getCurrentUser(){
         let user = this.firebase.auth().currentUser;
-
+    
         if (user != null) {
             this.user = user;
             this._updateUserDisplayName();

@@ -11,7 +11,6 @@ export default class App {
 
     // 1.1 User
     //-------------------------------------------------
-    
     userExistCurrent(){
         this.user.getCurrentUser();
     }
@@ -22,5 +21,8 @@ export default class App {
 
     userLogOut(){
         this.user.logOut();  
+    }
+    userName(){
+        this.user.getName();  
     }
 } 

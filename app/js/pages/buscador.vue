@@ -1,10 +1,11 @@
 <template>
     <div>
-        <input type="text" placeholder="Buscar aptitud" v-model="eee"/>
+        <input type="text" placeholder="Buscar aptitud" v-model="search"/>
+        {{ userName }}
         <span v-on:click="buscarAptitud">Buscar</span>
-        <p>Message is: {{ eee }}</p>
+        <p>Message is: {{ search }}</p>
         <span v-on:click="logOut">Logout</span>
-        <resultados></resultados>
+        <resultados :busqueda="search"></resultados>
     </div>
 </template>
 
@@ -14,19 +15,18 @@
     export default {
         data () {
             return {
-                eee: '',
-                existCurrentUser: app.userExistCurrent()
+                search: null,
+                userName: app.userName()
             }
         },
         methods: {
-            buscarAptitud () {
-                return this.eee; 
+            buscarAptitud () { 
+                return this.search;
             },
             logOut(){
                 app.userLogOut();
             }
         },
-
         components: {
             resultados
         }
