@@ -18,7 +18,7 @@
             } 
         }, 
         methods: { 
-            buscarAptitud () {
+            buscarAptitud (){
                
             }
         },
