@@ -9,24 +9,28 @@
 </template>
 
 <script>
-    import User from '../class/User';
+    import { app } from '../proxy';
     
     export default {
         data () {
             return {
                 email: '',
                 password: '',
-                existUser: 
+                exitUser: app.userExistCurrent()
             }
         },
         methods: {
             login () {
                 app.userLogIn(this.email,this.password);
-            },
-            init (){
-               
             }
         }
     }
 
 </script>
+
+<style>
+    .menu{ 
+        display: none;
+    }
+
+</style>

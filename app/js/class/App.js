@@ -25,4 +25,4 @@ export default class App {
     userName(){
         this.user.getName();  
     }
-} 
+}  

@@ -1,6 +1,7 @@
 let Vue = require('../node_modules/vue/dist/vue.js');
 import VueRouter from '../node_modules/vue-router/dist/vue-router';
 
+
 Vue.use(VueRouter);
 
 import buscador from './pages/buscador.vue';
@@ -18,7 +19,7 @@ const routes = [
 const router = new VueRouter({
     routes
 });
- 
+
 new Vue({
     router
 }).$mount('#app'); 
