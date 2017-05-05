@@ -1,10 +1,13 @@
 <template>
     <div>
-        Soy resultados!!!
+        Resultados para la búsqueda: {{ busqueda }}
+
+        <template v-for="n in searchWord">
+            <p>Hemos encontrado a {{n }} !!!!</p>
+        </template>
 
         <boxresults></boxresults>
-        {{ busqueda }}
-        
+
     </div>
 </template>
 
@@ -14,12 +17,24 @@
     export default {
         data () {
             return {
-                usuarios: ''
+                usuarios: '',
+                items: [ 'Lucía', 'Pau', 'Roger', 'Alberto']
             } 
-        }, 
+        },
+        computed: {
+            searchWord: function(){
+                var texto = this.busqueda;
+                var personas = this.items;
+
+                return personas.filter(function (item) {
+                    if(item == texto){
+                        return item
+                    }
+                })
+            }
+        },
         methods: { 
             buscarAptitud (){
-               
             }
         },
         props:['busqueda'],
@@ -27,9 +42,7 @@
             boxresults
         },
         watch: {
-            busqueda: function () {
-                console.log("entro");
-            }
+
         }
     }
 </script>

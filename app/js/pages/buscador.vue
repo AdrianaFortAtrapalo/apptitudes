@@ -2,7 +2,7 @@
     <div>
         <input type="text" placeholder="Buscar aptitud" v-model="search"/>
         <span v-on:click="buscarAptitud">Buscar</span>
-        <p>Message is: {{ search }}</p>
+
         <span v-on:click="logOut">Logout</span>
         <resultados :busqueda="search"></resultados>
     </div>
