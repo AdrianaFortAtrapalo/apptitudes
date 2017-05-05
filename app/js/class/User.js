@@ -25,7 +25,23 @@ export default class User {
 
     login(email, password) {
         this.firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(() => {
+            .then((user) => {
+                this.user = user;
+                this._updateUserDisplayName();
+                this.firebase.database().ref('users/' + user.uid).set({
+                    username: user.displayName,
+                    email: user.email,
+                    aptitudes: { 
+                        js:{
+                            name: "helo",
+                            pt: 3
+                        },
+                        php:{
+                            name: "helo",
+                            pt: 3
+                        }
+                    }
+                });
                 this.getCurrentUser();
             })
             .catch(function (error) {
@@ -48,15 +64,9 @@ export default class User {
 
     _updateUserDisplayName() {
         let splitEmail = this.user.email.split('.');
-        let displayName = splitEmail[0] + ' ' + splitEmail[1];
+        let withoutAt = splitEmail[1].split('@');
+        let displayName = splitEmail[0] +' '+ withoutAt[0];
         this.user.updateProfile({ displayName: displayName });
-    }
-
-    _genercUSerAttr(){
-        let user = this.firebase.auth().currentUser;
-        if (user != null) {
-            return user;
-        }
     }
 
     logOut() {

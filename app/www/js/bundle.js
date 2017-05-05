@@ -3305,9 +3305,13 @@
 	            this.user.logOut();
 	        }
 	    }, {
-	        key: 'userName',
-	        value: function userName() {
-	            this.user.getName();
+	        key: 'searchGetAllUsers',
+	        value: function searchGetAllUsers() {
+	            var eee = this.firebase.database().ref('/users/').once('value').then(function (snapshot) {
+	                var username = snapshot.val().username;
+	            });
+
+	            console.log(eee);
 	        }
 	    }]);
 
@@ -4053,7 +4057,7 @@
 /* 25 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -4071,17 +4075,17 @@
 	    }
 
 	    _createClass(User, [{
-	        key: 'getId',
+	        key: "getId",
 	        value: function getId() {
 	            return this.user.uid;
 	        }
 	    }, {
-	        key: 'getEmail',
+	        key: "getEmail",
 	        value: function getEmail() {
 	            return this.user.email;
 	        }
 	    }, {
-	        key: 'getName',
+	        key: "getName",
 	        value: function getName() {
 	            var user = this.firebase.auth().currentUser;
 	            if (user != null) {
@@ -4089,18 +4093,34 @@
 	            }
 	        }
 	    }, {
-	        key: 'login',
+	        key: "login",
 	        value: function login(email, password) {
 	            var _this = this;
 
-	            this.firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
+	            this.firebase.auth().signInWithEmailAndPassword(email, password).then(function (user) {
+	                _this.user = user;
+	                _this._updateUserDisplayName();
+	                _this.firebase.database().ref('users/' + user.uid).set({
+	                    username: user.displayName,
+	                    email: user.email,
+	                    aptitudes: {
+	                        js: {
+	                            name: "helo",
+	                            pt: 3
+	                        },
+	                        php: {
+	                            name: "helo",
+	                            pt: 3
+	                        }
+	                    }
+	                });
 	                _this.getCurrentUser();
 	            }).catch(function (error) {
 	                console.log(error.message);
 	            });
 	        }
 	    }, {
-	        key: 'getCurrentUser',
+	        key: "getCurrentUser",
 	        value: function getCurrentUser() {
 	            var _this2 = this;
 
@@ -4116,22 +4136,15 @@
 	            }, 400);
 	        }
 	    }, {
-	        key: '_updateUserDisplayName',
+	        key: "_updateUserDisplayName",
 	        value: function _updateUserDisplayName() {
 	            var splitEmail = this.user.email.split('.');
-	            var displayName = splitEmail[0] + ' ' + splitEmail[1];
+	            var withoutAt = splitEmail[1].split('@');
+	            var displayName = splitEmail[0] + ' ' + withoutAt[0];
 	            this.user.updateProfile({ displayName: displayName });
 	        }
 	    }, {
-	        key: '_genercUSerAttr',
-	        value: function _genercUSerAttr() {
-	            var user = this.firebase.auth().currentUser;
-	            if (user != null) {
-	                return user;
-	            }
-	        }
-	    }, {
-	        key: 'logOut',
+	        key: "logOut",
 	        value: function logOut() {
 	            this.firebase.auth().signOut().then(function () {
 	                window.location = '/#/login';

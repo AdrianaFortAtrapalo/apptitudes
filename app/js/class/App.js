@@ -9,7 +9,7 @@ export default class App {
         this.user       = new User(this.firebase);
     }
 
-    // 1.1 User
+    // 1.1 Login
     //-------------------------------------------------
     userExistCurrent(){
         this.user.getCurrentUser();
@@ -22,7 +22,24 @@ export default class App {
     userLogOut(){
         this.user.logOut();
     }
-    userName(){
-        this.user.getName();  
+
+    // 1.2 Search apptitudes
+    //-------------------------------------------------
+    // searchGetApptitudes(){
+
+    // }
+
+    // 1.3 Search Users
+    //-------------------------------------------------
+    searchGetAllUsers(){
+        let eee = this.firebase.database().ref('/users/').once('value').then(function(snapshot) {
+            var username = snapshot.val().username;
+        });
+
+        console.log(eee);
     }
+
+    // 1.4 Profile
+    //-------------------------------------------------
+
 }  
