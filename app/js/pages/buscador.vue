@@ -2,7 +2,6 @@
     <div>
         <input type="text" placeholder="Buscar aptitud" v-model="search"/>
         <span v-on:click="buscarAptitud">Buscar</span>
-        {{ myName }}
         <p>Message is: {{ search }}</p>
         <span v-on:click="logOut">Logout</span>
         <resultados :busqueda="search"></resultados>
@@ -19,7 +18,7 @@
             return {
                 search: null,
                 myName: null,
-                exitUser: app.userExistCurrent()
+                existUser: app.userExistCurrent()
             }
         },
         methods: {
@@ -32,10 +31,7 @@
         },
         components: {
             resultados
-        },
-        mounted(){
-             this.myName = app.userName(); 
-        } 
+        }
     }
 
 </script>

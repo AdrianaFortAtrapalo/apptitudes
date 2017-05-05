@@ -3039,14 +3039,13 @@
 	//
 	//
 	//
-	//
 
 	exports.default = {
 	    data: function data() {
 	        return {
 	            search: null,
 	            myName: null,
-	            exitUser: _proxy.app.userExistCurrent()
+	            existUser: _proxy.app.userExistCurrent()
 	        };
 	    },
 
@@ -3060,9 +3059,6 @@
 	    },
 	    components: {
 	        resultados: _resultados2.default
-	    },
-	    mounted: function mounted() {
-	        this.myName = _proxy.app.userName();
 	    }
 	};
 
@@ -4072,7 +4068,6 @@
 	        _classCallCheck(this, User);
 
 	        this.firebase = firebase;
-	        this.user = null;
 	    }
 
 	    _createClass(User, [{
@@ -4088,8 +4083,10 @@
 	    }, {
 	        key: 'getName',
 	        value: function getName() {
-	            console.log(this.user.displayName);
-	            return this.user.displayName;
+	            var user = this.firebase.auth().currentUser;
+	            if (user != null) {
+	                return this.user.displayName;
+	            }
 	        }
 	    }, {
 	        key: 'login',
@@ -4105,14 +4102,18 @@
 	    }, {
 	        key: 'getCurrentUser',
 	        value: function getCurrentUser() {
-	            var user = this.firebase.auth().currentUser;
-	            if (user != null) {
-	                this.user = user;
-	                this._updateUserDisplayName();
-	                window.location = '/#/';
-	            } else {
-	                window.location = '/#/login';
-	            }
+	            var _this2 = this;
+
+	            setTimeout(function () {
+	                var user = _this2.firebase.auth().currentUser;
+	                if (user != null) {
+	                    _this2.user = user;
+	                    _this2._updateUserDisplayName();
+	                    window.location = '/#/';
+	                } else {
+	                    window.location = '/#/login';
+	                }
+	            }, 400);
 	        }
 	    }, {
 	        key: '_updateUserDisplayName',
@@ -4120,6 +4121,14 @@
 	            var splitEmail = this.user.email.split('.');
 	            var displayName = splitEmail[0] + ' ' + splitEmail[1];
 	            this.user.updateProfile({ displayName: displayName });
+	        }
+	    }, {
+	        key: '_genercUSerAttr',
+	        value: function _genercUSerAttr() {
+	            var user = this.firebase.auth().currentUser;
+	            if (user != null) {
+	                return user;
+	            }
 	        }
 	    }, {
 	        key: 'logOut',
@@ -4166,7 +4175,7 @@
 	    on: {
 	      "click": _vm.buscarAptitud
 	    }
-	  }, [_vm._v("Buscar")]), _vm._v("\n    " + _vm._s(_vm.myName) + "\n    "), _c('p', [_vm._v("Message is: " + _vm._s(_vm.search))]), _vm._v(" "), _c('span', {
+	  }, [_vm._v("Buscar")]), _vm._v(" "), _c('p', [_vm._v("Message is: " + _vm._s(_vm.search))]), _vm._v(" "), _c('span', {
 	    on: {
 	      "click": _vm.logOut
 	    }
@@ -4328,7 +4337,7 @@
 	        return {
 	            email: '',
 	            password: '',
-	            exitUser: _proxy.app.userExistCurrent()
+	            existUser: _proxy.app.userExistCurrent()
 	        };
 	    },
 

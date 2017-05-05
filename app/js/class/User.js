@@ -1,7 +1,6 @@
 export default class User {
     constructor(firebase) {
         this.firebase = firebase;
-        this.user = null;
     }
 
     // 1.1 Getters
@@ -15,8 +14,10 @@ export default class User {
     }
 
     getName() {
-        console.log(this.user.displayName);
-        return this.user.displayName;
+        let user = this.firebase.auth().currentUser;
+        if (user != null) {
+            return this.user.displayName;
+        }
     }
 
     // 1.2. Methods
@@ -33,20 +34,29 @@ export default class User {
     }
 
     getCurrentUser() {
-        let user = this.firebase.auth().currentUser;
-        if (user != null) {
-            this.user = user;
-            this._updateUserDisplayName();
-            window.location = '/#/';
-        } else {
-            window.location = '/#/login';
-        }
+        setTimeout(()=>{
+            let user = this.firebase.auth().currentUser;
+            if (user != null) {
+                this.user = user;
+                this._updateUserDisplayName();
+                window.location = '/#/';
+            } else {
+                window.location = '/#/login';
+            }
+        }, 400);
     }
 
     _updateUserDisplayName() {
         let splitEmail = this.user.email.split('.');
         let displayName = splitEmail[0] + ' ' + splitEmail[1];
         this.user.updateProfile({ displayName: displayName });
+    }
+
+    _genercUSerAttr(){
+        let user = this.firebase.auth().currentUser;
+        if (user != null) {
+            return user;
+        }
     }
 
     logOut() {

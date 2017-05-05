@@ -16,7 +16,7 @@
             return {
                 email: '',
                 password: '',
-                exitUser: app.userExistCurrent()
+                existUser: app.userExistCurrent()
             }
         },
         methods: {
