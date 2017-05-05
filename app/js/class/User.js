@@ -30,17 +30,7 @@ export default class User {
                 this._updateUserDisplayName();
                 this.firebase.database().ref('users/' + user.uid).set({
                     username: user.displayName,
-                    email: user.email,
-                    aptitudes: { 
-                        js:{
-                            name: "helo",
-                            pt: 3
-                        },
-                        php:{
-                            name: "helo",
-                            pt: 3
-                        }
-                    }
+                    email: user.email
                 });
                 this.getCurrentUser();
             })

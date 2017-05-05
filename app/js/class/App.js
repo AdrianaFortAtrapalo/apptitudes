@@ -32,11 +32,13 @@ export default class App {
     // 1.3 Search Users
     //-------------------------------------------------
     searchGetAllUsers(){
-        let eee = this.firebase.database().ref('/users/').once('value').then(function(snapshot) {
-            var username = snapshot.val().username;
+        let arrayList = [];
+        this.firebase.database().ref('users').once('value').then(function(snapshot) {
+            snapshot.forEach(function(element) {
+                arrayList.push(element.val());
+            });
         });
-
-        console.log(eee);
+        return arrayList;
     }
 
     // 1.4 Profile

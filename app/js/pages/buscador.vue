@@ -2,9 +2,15 @@
     <div>
         <input type="text" placeholder="Buscar aptitud" v-model="search"/>
         <span v-on:click="buscarAptitud">Buscar</span>
-
+        
         <span v-on:click="logOut">Logout</span>
         <resultados :busqueda="search"></resultados>
+[]        <ul>
+             <li v-for="u in allUsers">
+                <h3>{{ u.username }}</h3>
+                <p>{{ u.email }}</p>
+             </li>
+        </ul>
     </div>
 </template>
 
@@ -18,7 +24,8 @@
             return {
                 search: null,
                 myName: null,
-                existUser: app.userExistCurrent()
+                existUser: app.userExistCurrent(),
+                allUsers: app.searchGetAllUsers()
             }
         },
         methods: {
