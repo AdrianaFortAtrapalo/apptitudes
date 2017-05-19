@@ -45,9 +45,9 @@ export default class User {
             if (user != null) {
                 this.user = user;
                 this._updateUserDisplayName();
-                window.location = '/#/';
+                window.location = '#/';
             } else {
-                window.location = '/#/login';
+                window.location = '#/login';
             }
         }, 400);
     }
@@ -61,7 +61,7 @@ export default class User {
 
     logOut() {
         this.firebase.auth().signOut().then(function () {
-            window.location = '/#/login';
+            window.location = '#/login';
         }, function (error) {
             console.log(error);
         });

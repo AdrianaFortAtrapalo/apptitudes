@@ -5,7 +5,7 @@
         
         <span v-on:click="logOut">Logout</span>
         <resultados :busqueda="search"></resultados>
-[]        <ul>
+        <ul>
              <li v-for="u in allUsers">
                 <h3>{{ u.username }}</h3>
                 <p>{{ u.email }}</p>

@@ -4142,9 +4142,9 @@
 	                if (user != null) {
 	                    _this2.user = user;
 	                    _this2._updateUserDisplayName();
-	                    window.location = '/#/';
+	                    window.location = '#/';
 	                } else {
-	                    window.location = '/#/login';
+	                    window.location = '#/login';
 	                }
 	            }, 400);
 	        }
@@ -4160,7 +4160,7 @@
 	        key: 'logOut',
 	        value: function logOut() {
 	            this.firebase.auth().signOut().then(function () {
-	                window.location = '/#/login';
+	                window.location = '#/login';
 	            }, function (error) {
 	                console.log(error);
 	            });
@@ -4209,7 +4209,7 @@
 	    attrs: {
 	      "busqueda": _vm.search
 	    }
-	  }), _vm._v("\n[]        "), _c('ul', _vm._l((_vm.allUsers), function(u) {
+	  }), _vm._v(" "), _c('ul', _vm._l((_vm.allUsers), function(u) {
 	    return _c('li', [_c('h3', [_vm._v(_vm._s(u.username))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(u.email))])])
 	  }))], 1)
 	},staticRenderFns: []}
