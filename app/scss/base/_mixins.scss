@@ -1,0 +1,7 @@
+@mixin pasti($color-bg, $color-txt) {
+    background-color: $color-bg;
+    color: $color-txt;
+    padding: 2px 8px;
+    border-radius: 10px;
+    display: inline-block;
+}

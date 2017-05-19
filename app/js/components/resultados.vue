@@ -1,6 +1,6 @@
 <template>
     <div>
-        Resultados para la búsqueda: {{ busqueda }}
+        <!-- Resultados para la búsqueda: {{ busqueda }} -->
 
         <template v-for="n in searchWord">
             <p>Hemos encontrado a {{n }} !!!!</p>

@@ -1,10 +1,10 @@
+@import 'base/base';
+body{ margin: 0; }
 
-.hello{
-    background: #000;
-}
 
 .main-box{
-    border: 1px #ccc solid;
+    border-top: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
     padding: 10px;
     margin-bottom: 40px;
     overflow: hidden;
@@ -15,14 +15,13 @@
     border-radius: 50%;
     padding: 5px 10px;
     font-size: 30px;
-    color: #fff;
+    color: $white;
     float:left;
 }
 
 .info{
     float: left;
     margin-left: 10px;
-    width: 350px;
 
         .name{
             display: block;
@@ -42,13 +41,40 @@
         }
 
         .aptitudes-li{
-            background-color: cornflowerblue;
-            padding: 2px 8px;
-            border-radius: 10px;
-            display: inline-block;
+            @include pasti(#de0000, $black);
         }
+
+        .more-apptitudes{
+            list-style: none;
+            float: right;
+            margin-left: 5px;
+            a{
+                @include pasti(#6d9ee1, $white);
+                text-decoration: none;
+            }
+        }
+
+
 }
 
 .menu{
     display: block;
 }
+
+
+.search-block{
+    border-bottom: 2px #f5f7fc solid;
+    color: #35495e;
+    padding: 30px 0;
+    margin-bottom: 20px;
+    text-align: center;
+    .search-input{
+        border: 0;
+        background-color: #f5f7fc;
+        padding: 10px;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 350px;
+    }
+}
+

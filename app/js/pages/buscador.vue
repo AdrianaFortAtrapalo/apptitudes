@@ -1,9 +1,11 @@
 <template>
     <div>
-        <input type="text" placeholder="Buscar aptitud" v-model="search"/>
-        <span v-on:click="buscarAptitud">Buscar</span>
+
+    <div class="search-block">
+        <input type="text" placeholder="Buscar aptitud" v-model="search" class="search-input" />
+    </div>
         
-        <span v-on:click="logOut">Logout</span>
+
         <resultados :busqueda="search"></resultados>
         <ul>
              <li v-for="u in allUsers">
@@ -11,6 +13,7 @@
                 <p>{{ u.email }}</p>
              </li>
         </ul>
+        <span v-on:click="logOut">Logout</span>
     </div>
 </template>
 
