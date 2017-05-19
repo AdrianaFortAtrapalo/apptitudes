@@ -27,10 +27,3 @@
     }
 
 </script>
-
-<style>
-    .menu{ 
-        display: none;
-    }
-
-</style>
