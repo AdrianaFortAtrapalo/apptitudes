@@ -42,7 +42,7 @@
             boxresults
         },
         watch: {
-
+            
         }
     }
 </script>
